@@ -1,12 +1,14 @@
 # Build Bootcamp 1.0 CSS
-### Anatomy of a CSS rule
+
+
+## Anatomy of a CSS rule
 
 A CSS rule is made up of a (1)selector, (2)property and (3)value
-
-	.header(1) {
-		background-color(2): blue(3);
-	}
-
+```
+.header(1) {
+	background-color(2): blue(3);
+}
+```
 If the same property is used more than once in a given rule, the last definition in the rule is processed
 
 ```
@@ -24,13 +26,14 @@ Comments in CSS are written using a combination of the forward slash and asteris
 /* This is a comment */
 ```
 
+
 ### How CSS is used
 #### Inline styles
 These are styles written in the html file using the style attribute
 ```
-   <div style="background-color: red;">
-	   Cascading Style Sheet
-   <div>
+<div style="background-color: red;">
+   Cascading Style Sheet
+<div>
 ```
 	
 #### Style blocks
@@ -190,14 +193,14 @@ Combinators, combined with selectors can be used to select more specific element
  _This targets all divs that are direct children of elements with class header_
  
  #### General Sibling combinator 
- This is specified with ~
+ This is specified with `~`
  ```
  .header ~ div
  ```
  _This targets all divs that are siblings of elements with class header_
  
  #### Adjacent Sibling combinator 
- This is specified with +
+ This is specified with `+`
  ```
  .header + div
  ```
@@ -214,108 +217,134 @@ In order of preference
 
 
 ## Basic CSS concepts
-### The box model 
-![The Box Model]/box-model.png
+### The Box model 
+![The Box Model](box-model.png)
+
+_Image Credit [Jacob Kagon](https://jacob-kagon.medium.com/the-css-box-model-5bec034a91c4)_
 
 Elements in CSS are treated as a rectangular box made up of four major parts
-- margin
-- border 
-- padding 
-- content
+- Margin (space between an element's border and other elements)
+- Border 
+- Padding (space between an element's content and it's border) 
+- Content
 
- - Padding (space between an element's content and it's border)
- - Margin (space between an element's border and other elements)
-
-- Block and Inline Elements
+### Block and Inline Elements
 There are two types of HTML elements, block and inline elements
 
-Block elements always appear on their own line and takes up the full width of their containing element. The default height is set to fit the height of it's content eg <div>are 
+Block elements when rendered, always appear on their own line and take up the full width of their containing element. The default height is set to fit the height of it's content eg `<div>`
 
-Inline elements are rendered inside the normal flow of text and take up enough height and width for the content in them. Their height and width can't be changed explicitlye
+Inline elements are rendered inside the normal flow of text and take up enough height and width for the content in them. Their height and width can't be changed explicitly
 
-- Units 
- - px
- - em (relative to the font size of the element)
+### Units 
+A CSS unit determines the size of a property you're setting for an element or its content. 
+Examples include pixels (px), emphemeral unit (em), root emphemeral unit (rem), percentage (%) etc.
+ - Pixels (px)
  
-	 .title {
-		font-size: 20px;
-		padding: 0.5em;
-	}
-
-In this rule, the font size is set to 20px, so 0.5em equals 20 x 0.5 = 10px
-
-
- - rem (relative to the base font size of the browser)
- If the base font size of the browser is 16px (it is in most cases), 0.5rem will equal 16 x 0.5 = 8px
+ 1px equals the length of a pixel on a computer screen
+	
+ - Emphemeral unit (em) 
  
- - % (percentage)
- This is the percentage of the width of the direct parent
-	   
-	   
-	 .parent {
-		font-size: 60px;
-	}
+ This simply means the font size of the element. If the font size is 30px, then 1em will be 30px
+ ```
+ .title {
+	font-size: 20px;
+	padding: 0.5em;
+}
+```
+_In this rule, the font size is set to 20px, so 0.5em equals 20 x 0.5 = 10px_
 
-	.child {
-		font-size: 20%;
-	}
-	   
-	   
 
-The font-size of elements with the child class equals 20% of 60px = 12px
+ - Root Emphemeral unit 
  
- - vw (viewport width)
+ This simply means the root font size. Any element given this unit takes their sizing from the root element `<html>`
+ If the root font size of the browser is 16px (it is in most cases), 0.5rem will equal 16 x 0.5 = 8px
+ 
+ - Percentage (%)
+ 
+ The percentage is calculated with respect to the height of the element's containing block.
+ 
+ - Viewport width (vw)
+ 
  This is the current width of the browser
  Therefore 30vw equals 30% of the current width of the browser
  
- - vh (viewport height)
+ - Viewport height (vh)
+ 
  This is the current height of the browser
-  Therefore 40vh equals 40% of the current height of the browser
+ Therefore 40vh equals 40% of the current height of the browser
   
-  Some CSS properties do not require units eg. opacity. They just use integers.
-
+  
+There are some cases where units are not needed 
+- When setting values for properties that do not require units like `opacity`
+- When setting zero 
+```
+div {
+  padding: 0;
+}
+```
 
  
-Basic Styling
-- Box Shadow (X offset, Y offset, Blur Radius, Spread Radius)
+## Basic Styling
 
-Backgrounds (Solid colors, images or gradients) and Gradients
-- Solid background colors (background-color)
-- Background Images (background-image)
-- Gradients (Linear gradients, radial gradients)
+#### Backgrounds 
+For backgrounds we can use solid colors, images and gradients
 
-Fonts
- - font-size, font-weight
+- Solid background colors (`background-color`)
+- Background Images (`background-image`)
+- Gradients (`linear gradients`, `radial gradients`)
 
-Layout and Positioning
-- 
+#### Fonts
+ - Font-size: This is used to set the font size of an element 
+ - Font-weight: This is used to set the weight of an element (boldness)
 
-Positioning
+
+
+## Layout and Positioning
+ 
+
+### Positioning
 The positioning property determines the position of elements. The top, right, bottom and left properties are used to determine an element's position. The default position for every element is static
-- Static (The default position)
-- Relative
-When an element's position is set to relative, other elements in the document are not affected and it's change in position is relative to it's self.
-
+The position of an element can be set to static, relative, absolute or fixed
+#### Static (The default position)
+#### Relative
+An element with position set to `position :relative`, it's change in position is relative to it's self. A gap is left in the document flow and the positions of other elements are not affected
 	   
-	.title {
-		postion: relative;
-		top: 30px;
-	}
+```
+.title {
+  postion: relative;
+  top: 30px;
+}
+```
 	   
+_This rule sets the element 30px away from the top of it's original position_
 
-This rule sets the element 30px away from the top of it's original position
-
-- Absolute
-When an element's position is set to absolute, other elements in the document flow are affected and it's change in position is relative to the closest surrounding relative parent element.
+#### Absolute
+ An element with position set to `position :absolute`, it's change in position is relative to the closest positioned ansector. If an absolute positioned element has no positioned ancestors, it uses the document body, and moves along with page scrolling. No gap is left in the document flow and the positions of other elements are affected
 
 ```	   
 .title {
-	postion: absolute;
-	top: 30px;
+  postion: absolute;
+  top: 30px;
 }
 ```	   
 
-This rule sets the element 30px away from the top of closest surrounding relative parent
+_This rule sets the element 30px away from the top of closest surrounding relative parent_
 
+#### Fixed
+An element with `position: fixed;` is positioned relative to the viewport, which means it always stays in the same place even if the page is scrolled. No gap is left in the document flow and the positions of other elements are affected
 
-Z-index (stacking order of elements along the z-index, which element is on top of which)
+```	   
+.title {
+  postion: fixed;
+  top: 30px;
+}
+```
+
+_This rule sets the element 30px away from the top of the viewport_
+
+Z-index 
+This property controls the vertical stacking order of elements along the z-index (which element is on top of which)
+
+![Z-index](z-index.png)
+
+_Image Credit [Sonia Dimitru](https://medium.com/@soni.dumitru/z-index-in-css-7afadd369e07)_
