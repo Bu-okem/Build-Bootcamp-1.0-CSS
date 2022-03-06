@@ -1,5 +1,6 @@
-# Build-Bootcamp-1.0-CSS-
-Anatomy of a CSS rule
+# Build Bootcamp 1.0 CSS
+### Anatomy of a CSS rule
+
 A CSS rule is made up of a (1)selector, (2)property and (3)value
 
 	.header(1) {
@@ -8,27 +9,32 @@ A CSS rule is made up of a (1)selector, (2)property and (3)value
 
 If the same property is used more than once in a given rule, the last definition in the rule is processed
 
+```
 .header {
 	background-color: blue;
 	background-color: red;
 }
+```
+_This element will have a red background_
 
-This element will have a green background
 
-Comments
+### Comments
 Comments in CSS are written using a combination of the forward slash and asterisk (/* */)
+```
+/* This is a comment */
+```
 
-How CSS is used
-- Inline styles
+### How CSS is used
+#### Inline styles
 These are styles written in the html file using the style attribute
-
+```
    <div style="background-color: red;">
 	   Cascading Style Sheet
    <div>
-
+```
 	
-- Style blocks
-These styles are also written in the html document but in style blocks
+#### Style blocks
+These styles are also written in the html document but in style blocks inside the `<head>` tag
 
 	
 	
@@ -37,7 +43,7 @@ These styles are also written in the html document but in style blocks
 	  <head>
 	    <style>
 		div {
-			background-color: green;
+		  background-color: green;
 		}
 	    </style>
 	  </head>
@@ -45,112 +51,95 @@ These styles are also written in the html document but in style blocks
 	    <div></div>
 	  </body>
 	</html>
-
 	
 	
-- External Style sheets
+	
+#### External Style sheets
 These are styles written outside the html document in it's own file, with the .css extension. This is then linked to the html document through the link tag
 	   
 	   
-
-	<!DOCTYPE html>
-	<html lang="en">
-	  <head>
-		<link rel="stylesheet" href="style.css" />  
-	  </head>
-	  <body>
-	    <div></div>
-	  </body>
-	</html>
+```
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+	<link rel="stylesheet" href="style.css" />  
+  </head>
+  <body>
+    <div></div>
+  </body>
+</html>
+```
 	   
-	   
 
-How CSS works in the browser
-- DOM (Document Object Model)
+### How CSS works in the browser
+#### DOM (Document Object Model)
 This is a tree of objects that represents the elements in the document and their structure and heirarchy.
-	   
-	   
 
-	<!DOCTYPE html>
-	<html lang="en">
-	  <head>
-		<link rel="stylesheet" href="style.css" />  
-	  </head>
-	  <body>
-	  <h1>Github</h1>
-	    <div>
-		<h2>CSS</h2>
-		<p>Tutorial</p>
-	    </div>
-	  </body>
-	</html>
-	   
-	   
 
-- CSSOM
+#### CSSOM
 This is a representation of the heirarchy of the styles in the document. DOM and CSSOM are quite similar, however, CSSOM is a seperate structure from the DOM.
 
 
-- The Render Tree
+#### The Render Tree
 This is a combination of the DOM and the CSSOM, which contains all the data the browser needs to render the page
 
-CSS Selectors
-- The Universal Selector (*)
+
+## CSS Selectors
+#### The Universal Selector (*)
 This is used to select all elements in the document.
 
+```
+* {
+  margin: 10px;
+}
+```
 	   
-	* {
-	  margin: 10px;
-	}
+_This will apply a margin of 10px to all elements in the document_
 
+
+
+#### Element Selectors (h1, p, etc.)
+This is used to select a html element by it's tag name.
+```   
+p {
+  font-size: 10px;
+}
+```
 	   
-*This will apply a margin of 10px to all elements in the document
-
-
-
-- Element Selectors (h1, p, etc.)
-This is used to select html elements by it's tag name.
-
-	   
-	p {
-	  font-size: 10px;
-	}
-
-	   
-*This will apply a font size of 10px to all elements with the <p> tag in the document
+_This will apply a font size of 10px to all elements with the `<p>` tag in the document_
 
 	   
 	   
-- ID Selectors (#)
+#### ID Selectors (#)
 HTML elements have an ID attribute. By the HTML specification, there should be only one element with a given ID. However, if there are multiple elements with the same id, the browser will match the rule with all the elements having that ID.
    
-
-	#chapter_header {
-	  padding: 20px;
-	}
-
+```
+#chapter_header {
+  padding: 20px;
+}
+```
 	   
 	   
-*This rule will apply a padding on elements with the #chapter_heading id.
-ie. The class selector is best used for selecting multiple elements.
+_This rule will apply a padding on elements with the #chapter_heading id._
+
+***ie. The class selector is best used for selecting multiple elements.***
 
 	   
-- Class selectors(.)
+#### Class selectors(.)
 HTML elements can also have a class attribute, which can be used to target all the elements of a similar type. HTML elements can have any number of classes in the class attribute.
 
-	   
+```
 .title {
   background-color: black;
   color: white;
 }
-	   
-	   
+```	   
 
-*This rule will affect every element with the class, title.
+_This rule will affect every element with the class, `.title`._
 
 
-- Attribute Selectors
-This is specified using square brackets ([]) and can take several forms
+#### Attribute Selectors
+This is specified using square brackets ([ ]) and can take several forms
 - [name] = This selects all the elements with the given attribute
 
 - [name="value"] = selects all the elements that have the given attribute, whose value is string value 
@@ -166,55 +155,57 @@ This is specified using square brackets ([]) and can take several forms
 
 These selectors can be combined to make the selector more specific
 
-	div.chapter_header {
-	  padding: 20px;
-	}
+```
+div.chapter_header {
+  padding: 20px;
+}
+```
 
 
-- Multiple independent selectors (seperating selectors with comma)
 A CSS rule can have multiple selectors by simply seperating them with commas.
 
+```	   
+.chapter_header,
+.title_header {
+  padding: 20px;
+}
+```
 	   
-	.chapter_header,
-	.title_header {
-	  padding: 20px;
-	}
 
-	   
-
-- Selector combinators
-Combinators, combined with selectors are used to select more specific elements
- - Descendant Combinator 
+### Selector combinators
+Combinators, combined with selectors can be used to select more specific elements
+ #### Descendant Combinator 
  This is specified with a space
- 
+ ```
  .header div
+ ```
+ _This targets all divs that are descendants (direct or indirect children) of elements with class header_
  
- This targets all divs that are direct or indirect children (descendants) of elements with class header
  
- 
- - Child Combinator 
- This is specified with > 
- 
+ #### Child Combinator 
+ This is specified with `>`
+ ```
  .header > div
+ ```
+ _This targets all divs that are direct children of elements with class header_
  
- This targets all divs that are direct children of elements with class header
- 
- - General Sibling combinator 
+ #### General Sibling combinator 
  This is specified with ~
- 
+ ```
  .header ~ div
+ ```
+ _This targets all divs that are siblings of elements with class header_
  
- This targets all divs that are siblings of elements with class header
- 
- - Adjacent Sibling combinator 
+ #### Adjacent Sibling combinator 
  This is specified with +
- 
+ ```
  .header + div
+ ```
+ _This targets all divs that are immediate siblings of elements with class header_
  
- This targets all divs that are immediate siblings of elements with class header
- 
-Specificity
+## Specificity
 This is the hierarchy in which rules are applied based on the selector used
+
 In order of preference
 - Inline Styles in an lements style attribute
 - ID selectors
@@ -222,9 +213,9 @@ In order of preference
 - Element selectors
 
 
-Basic CSS concepts
-- The box model 
-([in order from the outside] margin, border, padding & content)
+## Basic CSS concepts
+### The box model 
+![The Box Model]/box-model.png
 
 Elements in CSS are treated as a rectangular box made up of four major parts
 - margin
@@ -317,12 +308,12 @@ This rule sets the element 30px away from the top of it's original position
 - Absolute
 When an element's position is set to absolute, other elements in the document flow are affected and it's change in position is relative to the closest surrounding relative parent element.
 
-	   
+```	   
 .title {
 	postion: absolute;
 	top: 30px;
 }
-	   
+```	   
 
 This rule sets the element 30px away from the top of closest surrounding relative parent
 
