@@ -218,7 +218,7 @@ In order of preference
 
 ## Basic CSS concepts
 ### The Box model 
-![The Box Model](box-model.png)
+![The Box Model](./images/box-model.png)
 
 _Image Credit [Jacob Kagon](https://jacob-kagon.medium.com/the-css-box-model-5bec034a91c4)_
 
@@ -345,6 +345,6 @@ _This rule sets the element 30px away from the top of the viewport_
 Z-index 
 This property controls the vertical stacking order of elements along the z-index (which element is on top of which)
 
-![Z-index](z-index.png)
+![Z-index](./images/z-index.png)
 
 _Image Credit [Sonia Dimitru](https://medium.com/@soni.dumitru/z-index-in-css-7afadd369e07)_
